@@ -21,8 +21,11 @@
       <a class="button is-primary" href="{{url_for('feed')}}">
         <strong>map</strong>
       </a>
-      <a class="button is-light" href="{{url_for('enter')}}">
+      <a class="button is-light" href="{{url_for('logout')}}">
         log out
+      </a>
+      <a class="button is-light" href="{{url_for('logout')}}">
+        my profile ({{ user }})
       </a>
     </div>
   </div>
@@ -83,26 +86,23 @@
       </div>
     </div>
     
-    
-  {% for place in location.values() %}
   </div>
   <div class="level-item">
     <div>
       <section class="section">
       <div class="container">
         <div class="field">         
-          <h1>{{ place['Name'] }}</h1>
+          <h1>{{ location['Name'] }}</h1>
         </div>
 
         <div class="field">         
-          <p>{{ place['Address'] }}
+          <p>{{ location['Address'] }}
           </p>
         </div>
       </div> 
       
     </div>
   </div>
-  {% endfor %}
 </nav>
 
 

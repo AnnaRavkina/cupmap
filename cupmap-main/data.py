@@ -38,9 +38,30 @@ location1 = {
     "Name": "ABC Coffee Roasters",
     "Address": "Dmitrovka St, 17",
     "Comments": [comment1, comment2],
-    "Picture": "restroom.png"
+    "Picture": "restroom.png",
+    "Stars": 4
 }
 
 test_location = {
     1: location1
+}
+
+user1 = {
+    "UserId": 1,
+    "Name": "Barbara Middleton",
+    "Picture": "barbara.png",
+    "Info": "I like exploring the city!",
+    "Added": location1 
+}
+
+user2 = {
+    "UserId": 2,
+    "Name": "Elena Kurkova",
+    "Picture": "elena.png",
+    "Info": "I've been using the cup for 5 years."
+}
+
+test_users = {
+    1: user1,
+    2: user2
 }

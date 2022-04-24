@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+</a>
+</div>
+
+<div id="navbarBasicExample" class="navbar-menu">
+<div class="navbar-start">
+
+  </div>
+</div>
+
+<div class="navbar-end">
+  <div class="navbar-item">
+    <div class="buttons">
+      <a class="button is-primary" href="{{url_for('feed')}}">
+        <strong>map</strong>
+      </a>
+      <a class="button is-light" href="{{url_for('logout')}}">
+        log out
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+ 
+          <article class="media">
+          <div class="media-left">
+              <figure class="image is-64x64">
+              <img class="is-rounded" src="{{ url_for('static', filename=users['Picture']) }}" alt="Image">
+              </figure>
+          </div>
+          <div class="media-content">
+              <div class="content">
+              <p>
+                  <strong>{{ users['Name'] }}</strong> 
+                  <br>
+                  <form>
+                  <div class="field">
+                      <div class="control">
+                          <p>{{ users['Info'] }}</p>
+                      </div>
+                  </div>
+          </form>
+  
+              </p>
+              </div>
+          </div>
+          </article>
+
+  </div>
+</section>
+{% endblock %}

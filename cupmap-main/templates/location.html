@@ -23,8 +23,11 @@
       <a class="button is-primary" href="{{url_for('feed')}}">
         <strong>map</strong>
       </a>
-      <a class="button is-light" href="{{url_for('enter')}}">
+      <a class="button is-light" href="{{url_for('logout')}}">
         log out
+      </a>
+      <a class="button is-light" href="{{url_for('logout')}}">
+        my profile ({{ user }})
       </a>
     </div>
   </div>
@@ -38,10 +41,10 @@
 <nav class="level">
   <div class="level-item">
     <div>
-      {% for place in location.values() %}
       <div class="container">
         <div class="field">         
-          <h1>{{ place['Name'] }}</h1>
+          <h1>{{ location['Name'] }}</h1>
+          <h2>{{ location['Address'] }}</h2>
           <span class="icon">
           <i class="fa-solid fa-location-dot"></i>
           </span>
@@ -49,19 +52,23 @@
 
       <section class="section">
         <div class="field">
+
+          
   
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
           <span class="heading">Rating</span>
+
+          {% for i in range(0, location['Stars']) %}
+          <span class="fa fa-star checked" style="color:gold"></span>
+          {% endfor %}
+
+          {% for i in range(location['Stars'], 5) %}
           <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
+          {% endfor %}
 
         </div>
       </section>
-      {% endfor %}
 
         <div class="field">
           <div class="container">
@@ -127,7 +134,7 @@
     <div>
       <section class="section">
       <div class="container">
-        <a href="{{url_for('rating')}}">
+        <a href="{{url_for('rating', location_id=location['LocationId'])}}">
           <button class="button is-success">
             rate location
           </button>
