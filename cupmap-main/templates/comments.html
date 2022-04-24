@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  </div>
+  
+  <div id="navbarBasicExample" class="navbar-menu">
+  <div class="navbar-start">
+  
+    </div>
+  </div>
+  
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        <a class="button is-primary" href="{{url_for('feed')}}">
+          <strong>map</strong>
+        </a>
+        <a class="button is-light" href="{{url_for('enter')}}">
+          log out
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+  </nav>
+
+ <section class="section">
+    <div class="container">
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img class="is-rounded" src="{{ url_for('static', filename=comment['Picture']) }}">
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{ comment['Name'] }}</strong>
+            <small>{{ comment['DateTime'] }}</small>
+            <br>
+            {{ comment['Text'] }}
+            <br>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                  <a class="level-item" aria-label="reply">
+                      <span class="icon-text">
+                          <span class="icon">
+                          <i class="fas fa-heart"></i>
+                          </span>
+                          <span>{{ comment['Likes'] | count }}</span>
+                      </span>
+                  </a>
+
+                  <a class="level-item" aria-label="like">
+                      <span class="icon-text">
+                          <span class="icon">
+                          <i class="fas fa-comment"></i>
+                          </span>
+                          <span>{{ comment['Comments'] | count}}</span>
+                      </span>
+                  </a>
+              </div>
+            </nav>
+          </p>
+        </div>
+    
+        {% for reply in comment['Comments'] %}
+        <article class="media">
+          <figure class="media-left">
+            <p class="image is-48x48">
+              <img class="is-rounded" src="{{ url_for('static', filename=reply['Picture']) }}">
+            </p>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>{{ reply['Name'] }}</strong>
+                <small>{{ reply['DateTime'] }}</small>
+                <br>
+                {{ reply['Text'] }}
+                <br>
+              </p>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+
+      </div>
+    </article>
+    
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img class="is-rounded" src="{{ url_for('static', filename=comment['Picture']) }}">
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="field">
+          <p class="control">
+            <textarea class="textarea" placeholder="Add a comment..." rows=2></textarea>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <button class="button">Post comment</button>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+  </section>
+
+{% endblock %}

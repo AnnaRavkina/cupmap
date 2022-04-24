@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+</a>
+</div>
+
+<div id="navbarBasicExample" class="navbar-menu">
+<div class="navbar-start">
+
+  </div>
+</div>
+
+
+
+<div class="navbar-end">
+  <div class="navbar-item">
+    <div class="buttons">
+      <a class="button is-primary" href="{{url_for('feed')}}">
+        <strong>map</strong>
+      </a>
+      <a class="button is-light" href="{{url_for('enter')}}">
+        log out
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+</nav>
+
+
+
+
+<nav class="level">
+  <div class="level-item">
+    <div>
+      <div class="container">
+        <div class="field">         
+          <h1>ABC Coffee Roasters</h1>
+          <span class="icon">
+          <i class="fa-solid fa-location-dot"></i>
+          </span>
+        </div>
+
+      <section class="section">
+        <div class="field">
+  
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+          <span class="heading">Rating</span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+
+        </div>
+      </section>
+
+        <div class="field">
+          <div class="container">
+            <img src="{{ url_for('static', filename='rating.png') }}" width="300" height="200">
+        </div> 
+        </div>
+
+
+      <h1>comments</h1>
+
+        {% for comment in comments.values() %}
+        <section class="section">
+        <div class="field">
+          <article class="media">
+
+            <figure class="media-left">
+              <p class="image is-48x48">
+                <img class="is-rounded" src="{{ url_for('static', filename=comment['Picture']) }}">
+              </p>
+            </figure>
+            
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{ comment['Name'] }}</strong>
+                  <small>{{ comment['DateTime'] }}</small>
+                  <br>
+                  {{ comment['Text'] }}
+                  <br>
+                  <nav class="level is-mobile">
+                    <div class="level-left">
+                        <a class="level-item" aria-label="reply">
+                            <span class="icon-text">
+                                <span class="icon">
+                                <i class="fas fa-heart"></i>
+                                </span>
+                                <span>{{ comment['Likes'] | count }}</span>
+                            </span>
+                        </a>
+        
+                        
+                        <a class="level-item" aria-label="like" href="{{ url_for('comments', comment_id=comment['CommentId']) }}">
+                            <span class="icon-text">
+                                <span class="icon">
+                                <i class="fas fa-comment"></i>
+                                </span>
+                                <span>{{ comment['Comments'] | count}}</span>
+                            </span>
+                        </a>
+                    </div>
+                  </nav>
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+        </section>
+        {% endfor %}
+      </div>
+    </div>
+    
+  </div>
+  <div class="level-item">
+    <div>
+      <section class="section">
+      <div class="container">
+        <a href="{{url_for('rating')}}">
+          <button class="button is-success">
+            rate location
+          </button>
+        </a>
+      </div> 
+      </section>
+      <section class="section">
+      <div class="container">
+          <img src="{{ url_for('static', filename='restroom.png') }}" width="450" height="200">
+      </div> 
+      </section>
+    </div>
+  </div>
+</nav>
+
+{% endblock %}

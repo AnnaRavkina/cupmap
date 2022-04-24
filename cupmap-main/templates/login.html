@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+</a>
+</div>
+
+<div id="navbarBasicExample" class="navbar-menu">
+<div class="navbar-start">
+
+  </div>
+</div>
+
+<div class="navbar-end">
+  <div class="navbar-item">
+    <div class="buttons">
+      <a class="button is-light">
+        about
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+</nav>
+
+<nav class="level">
+  <div class="level-item">
+    <div>
+      <div class="container">
+        <div class="field">
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="Email">
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left">
+            <input class="input" type="password" placeholder="Password">
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <a href="{{url_for('feed')}}">
+              <button class="button is-success">
+                login
+              </button>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <div class="container">
+        <img src="{{ url_for('static', filename='hands_cups.png') }}" width="450" height="2500">
+      </div> 
+    </div>
+  </div>
+</nav>
+
+{% endblock %}
