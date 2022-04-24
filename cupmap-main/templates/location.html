@@ -38,9 +38,10 @@
 <nav class="level">
   <div class="level-item">
     <div>
+      {% for place in location.values() %}
       <div class="container">
         <div class="field">         
-          <h1>ABC Coffee Roasters</h1>
+          <h1>{{ place['Name'] }}</h1>
           <span class="icon">
           <i class="fa-solid fa-location-dot"></i>
           </span>
@@ -60,13 +61,13 @@
 
         </div>
       </section>
+      {% endfor %}
 
         <div class="field">
           <div class="container">
             <img src="{{ url_for('static', filename='rating.png') }}" width="300" height="200">
-        </div> 
+          </div> 
         </div>
-
 
       <h1>comments</h1>
 

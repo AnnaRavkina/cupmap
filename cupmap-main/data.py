@@ -32,3 +32,15 @@ test_comments = {
     1: comment1,
     2: comment2
 }
+
+location1 = {
+    "LocationId": 1,
+    "Name": "ABC Coffee Roasters",
+    "Address": "Dmitrovka St, 17",
+    "Comments": [comment1, comment2],
+    "Picture": "restroom.png"
+}
+
+test_location = {
+    1: location1
+}
