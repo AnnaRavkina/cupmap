@@ -24,7 +24,7 @@
       <a class="button is-light" href="{{url_for('logout')}}">
         log out
       </a>
-      <a class="button is-light" href="{{url_for('my_profile', user_id=users['UserId'])}}">
+      <a class="button is-light">
         my profile ({{ user }})
       </a>
     </div>
@@ -68,20 +68,82 @@
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star"></span>
 
-      <div class="field"> 
-        <h1>your comment</h1>
-        </div>
 
-      <div class="field"> 
-        <textarea class="textarea" placeholder="comment"></textarea>
-      </div>
 
-      <div class="buttons">
-        <a class="button is-primary">
-          <strong>submit</strong>
-        </a>
-      </div>
+    <form name="star_submit" id="star_submit" action="test_form.php" method="post">
+      <fieldset>
+      <table>
+      <tr>
+         <td colspan="1">
+           <label>your rating </label> 
+                  <br>
+         <div class="star_rating">
+               <input type="checkbox" id="star5" name="Star_Rating_of_5_stars" class="fa fa-star" value="5">
+            <label for="star5" class="star" title="4 stars"></label>
+               <input type="checkbox" id="star4" name="Star_Rating_of_5_stars" class="fa fa-star" value="4">
+            <label for="star4" class="star" title="4 stars"></label>
+               <input type="checkbox" id="star3" name="Star_Rating_of_5_stars" class="fa fa-star" value="3">
+            <label for="star3" class="star" title="3 stars"></label>
+               <input type="checkbox" id="star2" name="Star_Rating_of_5_stars" class="fa fa-star" value="2">
+            <label for="star2" class="star" title="2 stars"></label>
+               <input type="checkbox" id="star1" name="Star_Rating_of_5_stars" class="fa fa-star" value="1">
+            <label for="star1" class="star" title="1 stars"></label>
+         </div>
+        </td>
+      </tr>
+    </fieldset>
+    <tr>
+       <td colspan="1">
+          <div class="rectangle">
+             <label for="submit">
+                <button type="submit" id="submit" class="rounded" value="Submit">Submit</button>
+             </label>
+          </div>
+       </td>
+    </tr>
+    </table>
+    </form>
 
+
+        <form action="/create" method="post">
+
+          
+            <table>
+            <tr>
+               <td colspan="1">
+                 <label>your rating </label> 
+                        <br>
+               <div class="star_rating">
+                     <input type="checkbox" id="star5" name="Star_Rating_of_5_stars" class="fa fa-star" value="5">
+                  <label for="star5" class="star" title="4 stars"></label>
+                     <input type="checkbox" id="star4" name="Star_Rating_of_5_stars" class="fa fa-star" value="4">
+                  <label for="star4" class="star" title="4 stars"></label>
+                     <input type="checkbox" id="star3" name="Star_Rating_of_5_stars" class="fa fa-star" value="3">
+                  <label for="star3" class="star" title="3 stars"></label>
+                     <input type="checkbox" id="star2" name="Star_Rating_of_5_stars" class="fa fa-star" value="2">
+                  <label for="star2" class="star" title="2 stars"></label>
+                     <input type="checkbox" id="star1" name="Star_Rating_of_5_stars" class="fa fa-star" value="1">
+                  <label for="star1" class="star" title="1 stars"></label>
+               </div>
+              </td>
+            </tr>
+          
+
+
+          <div class="field">
+            <label class="label">your comment</label>
+            <div class="control">
+              <textarea class="textarea" name="location-comment" placeholder="Textarea"></textarea>
+            </div>
+          </div>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-primary"><strong>submit</strong></button>
+            </div>
+          </div>
+
+        </form>
   </div>
 </div>
 

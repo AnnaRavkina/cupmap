@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, request
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
 from data import test_comments, test_location, test_users
@@ -56,3 +56,7 @@ def logout():
 def my_profile(user_id):
     users = test_users[user_id]
     return render_template('profile.html', users=users, user=auth.current_user()) 
+
+@app.route("/create", methods = ['POST'] )
+def create():
+    return 'location comment was: ' + request.form['location-comment']
