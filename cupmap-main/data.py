@@ -65,3 +65,8 @@ test_users = {
     1: user1,
     2: user2
 }
+
+def get_user_id(username):
+    for user in test_users.values():
+        if user['Name'] == username:
+            return user['UserId']

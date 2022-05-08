@@ -2,42 +2,9 @@
 
 {% block content %}
 
-<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-  <span aria-hidden="true"></span>
-  <span aria-hidden="true"></span>
-  <span aria-hidden="true"></span>
-</a>
-</div>
+{{ comments }}
 
-<div id="navbarBasicExample" class="navbar-menu">
-<div class="navbar-start">
-
-  </div>
-</div>
-
-
-
-<div class="navbar-end">
-  <div class="navbar-item">
-    <div class="buttons">
-      <a class="button is-primary" href="{{url_for('feed')}}">
-        <strong>map</strong>
-      </a>
-      <a class="button is-light" href="{{url_for('logout')}}">
-        log out
-      </a>
-      <a class="button is-light" href="{{url_for('logout')}}">
-        my profile ({{ user }})
-      </a>
-    </div>
-  </div>
-</div>
-</div>
-</nav>
-
-
-
-
+{% for location in locations %}
 <nav class="level">
   <div class="level-item">
     <div>
@@ -52,8 +19,7 @@
 
       <section class="section">
         <div class="field">
-
-          
+        
   
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -78,21 +44,22 @@
 
       <h1>comments</h1>
 
-        {% for comment in comments.values() %}
+        {% for comment in comments %}
         <section class="section">
         <div class="field">
           <article class="media">
 
             <figure class="media-left">
               <p class="image is-48x48">
-                <img class="is-rounded" src="{{ url_for('static', filename=comment['Picture']) }}">
+                <img class="is-rounded" src="{{ url_for('static', filename='profile_pictures/'+users[location['Id']]['Picture']) }}">
               </p>
             </figure>
             
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong>{{ comment['Name'] }}</strong>
+                  <strong>{{ users[location['Id']]['Name'] }}</strong>
+                  <small>{{ comment['Username']  }}</small>
                   <small>{{ comment['DateTime'] }}</small>
                   <br>
                   {{ comment['Text'] }}
@@ -134,7 +101,7 @@
     <div>
       <section class="section">
       <div class="container">
-        <a href="{{url_for('rating', location_id=location['LocationId'])}}">
+        <a href="{{url_for('rating', location_id=location['Id'])}}">
           <button class="button is-success">
             rate location
           </button>
@@ -149,5 +116,6 @@
     </div>
   </div>
 </nav>
+{% endfor %}  
 
 {% endblock %}
