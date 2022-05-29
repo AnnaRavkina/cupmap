@@ -19,22 +19,29 @@ def query(query_text, *param):
     conn.close()
     return dicts
 
-def get_users():
-    return query('SELECT * FROM Users')
+def get_users(user_id):
+    return query('SELECT * FROM Users WHERE UserId = ?', user_id)
 
-def get_locations():
-    return query('SELECT * FROM Locations')
-
-def get_comments():
+def get_locations(location_id):
     return query("""
-        SELECT
-            Comments.Id,
-            Comments.UserId,
-            Comments.CommentText,
-            Users.Name,
-            Users.Username,
-            Users.Picture
-        FROM Comments
+        SELECT * FROM Locations 
+        INNER JOIN Comments
+	        ON Locations.Id = Comments.LocationId
         INNER JOIN Users
-            ON Comments.UserId = Users.Id
-    """)
+	        ON Comments.UserId = Users.UserId
+        INNER JOIN (SELECT CommentId, COUNT(UserId) AS LikeCount FROM Likes GROUP BY CommentId) L
+	        ON Comments.CommentId = L.CommentId
+        WHERE Locations.Id = ?
+    """, location_id)
+
+def get_comments(comment_id):
+    return query("""
+        SELECT * FROM Comments
+        INNER JOIN Users
+            ON Comments.UserId = Users.UserId
+        INNER JOIN Locations
+            ON Comments.LocationId = Locations.Id
+        INNER JOIN (SELECT CommentId, COUNT(UserId) AS LikeCount FROM Likes GROUP BY CommentId) L
+            ON Comments.CommentId = L.CommentId
+        WHERE Comments.CommentId = ?
+    """, comment_id)

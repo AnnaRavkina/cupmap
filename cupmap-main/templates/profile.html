@@ -5,21 +5,23 @@
 <section class="hero">
   <div class="hero-body">
  
+    {% for user in users %}
           <article class="media">
           <div class="media-left">
               <figure class="image is-64x64">
-              <img class="is-rounded" src="{{ url_for('static', filename=users['Picture']) }}" alt="Image">
+              <img class="is-rounded" src="{{ url_for('static', filename='profile_pictures/' + user['Picture']) }}" alt="Image">
               </figure>
           </div>
           <div class="media-content">
               <div class="content">
               <p>
-                  <strong>{{ users['Name'] }}</strong> 
+                  <strong>{{ user['Name'] }}</strong> 
+                  <small>{{ user['UserName'] }}</small>
                   <br>
                   <form>
                   <div class="field">
                       <div class="control">
-                          <p>{{ users['Info'] }}</p>
+                          <p>{{ user['Bio'] }}</p>
                       </div>
                   </div>
           </form>
@@ -28,7 +30,7 @@
               </div>
           </div>
           </article>
-
+    {% endfor %}
   </div>
 </section>
 {% endblock %}

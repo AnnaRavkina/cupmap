@@ -2,6 +2,23 @@
 
 {% block content %}
 
+{% if current_user.is_authenticated %}
+  Hi {{ current_user.name }}!
+{% else %}
+  User not logged in
+{% endif %}
+
+<form method="POST" action="{{ url_for('login')}}">
+    <table>
+    {% for field in form %}
+        <tr>
+            <th>{{ field.label }}</th>
+            <td>{{ field }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</form>
+
 <nav class="level">
   <div class="level-item">
     <div>
